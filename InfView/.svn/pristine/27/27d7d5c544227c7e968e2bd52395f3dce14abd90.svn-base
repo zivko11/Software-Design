@@ -1,0 +1,100 @@
+
+Engleski = English
+
+Srpski = Serbian
+
+miOnama = About
+
+miJezik = Language
+
+miZatvori = Close
+
+miOtvori = Open
+
+miPromeni = Edit
+
+miNovo = New
+
+miDatoteka = File
+
+miHelp = Help
+
+miZatvoriSemu = Close Scheme
+
+miOtvoriSemu = Open Scheme
+
+miPromeniSemu = Edit Scheme
+
+izaberiJezik = Choose language:
+
+engleski = English
+
+srpski = Serbian
+
+tipBaze = Choose DB Type:
+
+OK = OK
+
+odustani = Cancel
+
+SQLBp = SQL Database Connection
+
+JSONRes = JSON Schema File
+
+korisnickoIme = User name:
+
+sifra = Password:
+
+browse = Browse...
+
+JSONFile = JSON File
+
+JSONSchema = JSON Schema Files
+
+JSONErrorMsg = There is a mistake in your JSON
+
+JSONErrorTitle = Validation mistake
+
+SchemaErrorMsg = JSON doesn't follow meta schema
+
+SchemaErrorTitle = Parsing mistake
+
+ErrorTitle = Error
+
+pretraga = Search
+
+od = From
+
+do = To
+
+tacnaVrednost = Exact value
+
+raspon = Search within range
+
+brPretragaOn = Turn on numeric value search
+
+txtPretragaOn = Turn on text search
+
+datePretragaOn = Turn on Date search
+
+brPretraga = Numeric value search
+
+txtPretraga = Text search
+
+datePretraga = Date search
+
+sifraError = Wrong password!
+
+korImeError = Wrong user name!
+
+parsDosloDoGreske = Error occurred during parsing.
+
+noFileError = No file has been selected.
+
+IOException = There is a problem with the selected file.
+
+SQLException = There is an error with the database connection
+
+podatak = Data
+
+save = Save

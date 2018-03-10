@@ -1,0 +1,992 @@
+{
+	"name" : ["PSW 2017", "PSW 2017"],
+	"subsystem" : [
+		{
+			"name" : ["Teritorijalno politicka organizacija", "Territorial political organization"],
+			"id" : "01_TERITORIJALNOPOLITICKAORGANIZACIJA",
+			"tabels" : [],
+			"package" : [
+				{
+					"name" : ["Okruzenje poslovnih sistema", "Business system environment"],
+					"id" : "OKRUZENJE_POSLOVNIH_SISTEMA",
+					"table" : [
+						{
+							"name" : ["Politicka organizacija", "Political organization"],
+							"id" : "POLITICKA_ORGANIZACIJA",
+							"column" : [
+								{
+									"name" : ["Tip politicke organizacije", "Type of political organization"],
+									"id" : "VTO_OZNAKA",
+									"type" : "image",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Oznaka", "Label"],
+									"id" : "TPO_OZNAKA",
+									"type" : "datetime",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naziv", "Name"],
+									"id" : "TPO_NAZIV",
+									"type" : "varchar(120)",
+									"constraints" : null
+								},
+								{
+									"name" : ["Administrativno sediste", "Administrative center"],
+									"id" : "NME_IDENT",
+									"type" : "bigint",
+									"constraints" : null
+								},
+								{
+									"name" : ["Tip pravnog naslednika", "Type of legal succesor"],
+									"id" : "POL_VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : null
+								},
+								{
+									"name" : ["Pravni naslednik", "Legal succesor"],
+									"id" : "POL_TPO_OZNAKA",
+									"type" : "bigint",
+									"constraints" : null
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Oznaka", "Label"],
+									"Id" : "POLITICKA_ORGANIZACIJA_PK",
+									"Table_name" : ["Politicka organizacija", "Political organization"]
+								}
+							],
+							"Foreign_keys" : [
+								{
+									"id" : "TIPIZACIJA_FK",
+									"strong_ties" : true,
+									"Base_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "TIP_POLITICKE_ORGANIZACIJE",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "ADMINISTRATIVNO_SEDISTE_FK",
+									"strong_ties" : false,
+									"Base_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Base_column_id" : "NME_IDENT",
+									"Referenced_table_id" : "NME",
+									"Referenced_column_id" : "NME_IDENT"
+								},
+								{
+									"id" : "PRAVNI_NASLEDNIK_FK",
+									"strong_ties" : false,
+									"Base_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Base_column_id" : "POL_TPO_OZNAKA",
+									"Referenced_table_id" : "POL_ORG",
+									"Referenced_column_id" : "POL_TPO_OZNAKA"
+								}
+							]
+						},
+						{
+							"name" : ["Tip politicke organizacije", "Type of political organization"],
+							"id" : "TIP_POLITICKE_ORGANIZACIJE",
+							"column" : [
+								{
+									"name" : ["Oznaka", "Label"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naziv", "Name"],
+									"id" : "VTO_NAZIV",
+									"type" : "varchar(40)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Oznaka", "Label"],
+									"Id" : "TIP_POLITICKE_ORGANIZACIJE_PK",
+									"Table_name" : ["Tip politicke organizacije", "Type of political organization"]
+								}
+							],
+							"Foreign_keys" : null
+						},
+						{
+							"name" : ["Naseljeno mesto", "Populated place"],
+							"id" : "NASELJENO_MESTO",
+							"column" : [
+								{
+									"name" : ["Identifikator", "Identifier"],
+									"id" : "NME_IDENT",
+									"type" : "bigint",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naziv", "Name"],
+									"id" : "NME_NAZIV",
+									"type" : "varchar(60)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Identifikator", "Identifier"],
+									"Id" : "NASELJENO_MESTO_PK",
+									"Table_name" : ["Naseljeno mesto", "Populated place"]
+								}
+							],
+							"Foreign_keys" : null
+						},
+						{
+							"name" : ["Struktura po naseljima", "Structure by populated places"],
+							"id" : "STRUKTURA_PO_NASELJIMA",
+							"column" : [
+								{
+									"name" : ["Tip politicke organizacije", "Type of political organization"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Politicka organizacija", "Political organization"],
+									"id" : "TPO_OZNAKA",
+									"type" : "varchar(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naseljeno mesto", "Populated place"],
+									"id" : "NME_IDENT",
+									"type" : "bigint",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Koji put", "Which time"],
+									"id" : "U_KOJI_PUT",
+									"type" : "numeric(2, 0)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Od", "From"],
+									"id" : "U_OD",
+									"type" : "datetime",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Do", "To"],
+									"id" : "U_DO",
+									"type" : "datetime",
+									"constraints" : null
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Koji put", "Which time"],
+									"Id" : "STRUKTURA_PO_NASELJIMA_PK_1",
+									"Table_name" : ["Struktura po naseljima", "Structure by populated places"]
+								}
+							],
+							"Foreign_keys" : [
+								{
+									"id" : "MESTA_U_POLITICKIM_STRUKTURAMA_FK",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA_PO_NASELJIMA",
+									"Base_column_id" : "NME_IDENT",
+									"Referenced_table_id" : "NASELJENO_MESTO",
+									"Referenced_column_id" : "NME_IDENT"
+								},
+								{
+									"id" : "SADRZI_NASELJA_1",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA_PO_NASELJIMA",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "SADRZI_NASELJA_2",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA_PO_NASELJIMA",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								}
+							]
+						},
+						{
+							"name" : ["Struktura", "Structure"],
+							"id" : "STRUKTURA",
+							"column" : [
+								{
+									"name" : ["Tip slozene", "Type of composite"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Slozena", "Composite"],
+									"id" : "TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Tip sadrzane", "Type of contained"],
+									"id" : "POL_VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Sadrzana", "Contained"],
+									"id" : "POL_TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : null,
+							"Foreign_keys" : [
+								{
+									"id" : "STRUKTURA_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "STRUKTURA_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "STRUKTURA2_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA",
+									"Base_column_id" : "POL_VTO_OZNAKA",
+									"Referenced_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Referenced_column_id" : "POL_VTO_OZNAKA"
+								},
+								{
+									"id" : "STRUKTURA2_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "STRUKTURA",
+									"Base_column_id" : "POL_TPO_OZNAKA",
+									"Referenced_table_id" : "POLITICKA_ORGANIZACIJA",
+									"Referenced_column_id" : "POL_TPO_OZNAKA"
+								}									
+							]
+						}
+					]
+				},
+				{
+					"name" : ["Unutrasnja organizacija", "Internal organization"],
+					"id" : "UNUTRASNJA_ORGANIZACIJA",
+					"table" : [
+						
+							{
+								"name" : ["Poslovni sistem", "Business system"],
+								"id" : "POSLOVNI_SISTEM",
+								"column" : [
+									{
+										"name" : ["Tip", "Type"],
+										"id" : "VTO_OZNAKA",
+										"type" : "char(2)",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["Politicka organizacija", "Political organization"],
+										"id" : "TPO_OZNAKA",
+										"type" : "varchar(4)",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["Oznaka poslovnog sistema", "Label of business system"],
+										"id" : "PS_IDENT",
+										"type" : "int",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["Naziv", "Name"],
+										"id" : "PS_NAZIV",
+										"type" : "varchar(120)",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["Adresa", "Adress"],
+										"id" : "PS_ADRESA",
+										"type" : "varchar(120)",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["Sediste", "Headquarters"],
+										"id" : "NME_IDENT",
+										"type" : "bigint",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["www", "www"],
+										"id" : "PS_WWW",
+										"type" : "varchar(80)",
+										"constraints" : null									
+									},
+									{
+										"name" : ["E_mail", "E_mail"],
+										"id" : "PS_E_MAIL",
+										"type" : "varchar(80)",
+										"constraints" : null									
+									},
+									{
+										"name" : ["Telefon-centrala", "Telephone-center"],
+										"id" : "PS_TELEFON",
+										"type" : "varchar(40)",
+										"constraints" : null									
+									},
+									{
+										"name" : ["Tip pravnog subjekta", "Type of legal entity"],
+										"id" : "TPS_OZNAKA",
+										"type" : "char(1)",
+										"constraints" : "mandatory"									
+									},
+									{
+										"name" : ["Poslovni sledbenik", "Business follower"],
+										"id" : "POS_PS_IDENT",
+										"type" : "int",
+										"constraints" : null									
+									}
+								],
+								"Primary_keys" : [
+									{
+										"Column_name" : ["Oznaka poslovnog sistema", "Label of business system"],
+										"Id" : "POSLOVNI_SISTEM_PK",
+										"Table_name" : ["Poslovni sistem", "Business system"]
+									}
+								],
+								"Foreign_keys" : [
+									{
+										"id" : "REGISTROVANA_PRAVNA_LICA_FK_1",
+										"strong_ties" : true,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "VTO_OZNAKA",
+										"Referenced_table_id" : "TIP_POLITICKE_ORGANIZACIJE",
+										"Referenced_column_id" : "VTO_OZNAKA"
+									},
+									{
+										"id" : "REGISTROVANA_PRAVNA_LICA_FK_2",
+										"strong_ties" : true,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "TPO_OZNAKA",
+										"Referenced_table_id" : "TIP_POLITICKE_ORGANIZACIJE",
+										"Referenced_column_id" : "TPO_OZNAKA"
+									},
+									{
+										"id" : "SEDISTE_PRAVNOG_LICA_FK",
+										"strong_ties" : false,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "NME_IDENT",
+										"Referenced_table_id" : "NASELJENO_MESTO",
+										"Referenced_column_id" : "NME_IDENT"
+									},
+									{
+										"id" : "PRAVNI_SLEDBENIK_FK_1",
+										"strong_ties" : false,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "VTO_OZNAKA",
+										"Referenced_table_id" : "TIP_POLITICKE_ORGANIZACIJE",
+										"Referenced_column_id" : "VTO_OZNAKA"
+									},
+									{
+										"id" : "PRAVNI_SLEDBENIK_FK_2",
+										"strong_ties" : false,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "VTO_OZNAKA",
+										"Referenced_table_id" : "TIP_POLITICKE_ORGANIZACIJE",
+										"Referenced_column_id" : "VTO_OZNAKA"
+									},
+									{
+										"id" : "PRAVNI_SLEDBENIK_FK_3",
+										"strong_ties" : false,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "POS_PS_IDENT",
+										"Referenced_table_id" : "POSLOVNI_SISTEM",
+										"Referenced_column_id" : "POS_PS_IDENT"
+									},
+									{
+										"id" : "KLASIFIKACIJA_FK",
+										"strong_ties" : false,
+										"Base_table_id" : "POSLOVNI_SISTEM",
+										"Base_column_id" : "TPS_OZNAKA",
+										"Referenced_table_id" : "TIP_PRAVNOG_SUBJEKTA",
+										"Referenced_column_id" : "TPS_OZNAKA"
+									}
+								]
+							},
+						
+						{
+							"name" : ["Tip pravnog subjekta", "Type of legal entity"],
+							"id" : "TIP_PRAVNOG_SUBJEKTA",
+							"column" : [
+								{
+									"name" : ["Oznaka", "Label"],
+									"id" : "TPS_OZNAKA",
+									"type" : "char(1)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naziv", "Name"],
+									"id" : "TPS_NAZIV",
+									"type" : "varchar(50)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Oznaka", "Label"],
+									"Id" : "TIP_PRAVNOG_SUBJEKTA_PK",
+									"Table_name" : ["Tip pravnog subjekta", "Type of legal entity"]
+								}
+							],
+							"Foreign_keys" : null
+						},
+						{
+							"name" : ["Klasifikacija orgjed", "OrgUnit classification"],
+							"id" : "KLASIFIKACIJA_ORGJED",
+							"column" : [
+								{
+									"name" : ["Tip", "Type"],
+									"id" : "TPS_OZNAKA",
+									"type" : "char(1)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Klasa", "Class"],
+									"id" : "NOJ_OZNAKA_KLASE",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naziv", "Name"],
+									"id" : "NOJ_NAZIV",
+									"type" : "varchar(60)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Klasa", "Class"],
+									"Id" : "KLASIFIKACIJA_ORGJED_PK",
+									"Table_name" : ["Klasifikacija orgjed", "OrgUnit classification"]
+								}
+							],
+							"Foreign_keys" : [
+								{
+									"id" : "KLASIFIKACIJA_ORGJED_FK",
+									"strong_ties" : true,
+									"Base_table_id" : "KLASIFIKACIJA_ORGJED",
+									"Base_column_id" : "TPS_OZNAKA",
+									"Referenced_table_id" : "TIP_PRAVNOG_SUBJEKTA",
+									"Referenced_column_id" : "TPS_OZNAKA"
+								}
+							]
+						},
+						{
+							"name" : ["Sastav", "Composition"],
+							"id" : "SASTAV",
+							"column" : [
+								{
+									"name" : ["Oznaka3", "Label3"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Oznaka", "Label"],
+									"id" : "TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Ident", "Ident"],
+									"id" : "PS_IDENT",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Pos_Oznaka3", "Pos_Label3"],
+									"id" : "POS_VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Pos_Oznaka", "Pos_Label"],
+									"id" : "POL_TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Pos_Ident", "Pos_Ident"],
+									"id" : "POS_PS_IDENT",
+									"type" : "int",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : null,
+							"Foreign_keys" : [
+								{
+									"id" : "SASTAV_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "PS_IDENT"
+								},
+								{
+									"id" : "SASTAV2_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV",
+									"Base_column_id" : "POS_VTO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "POS_VTO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV2_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV",
+									"Base_column_id" : "POS_TPO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "POS_TPO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV2_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV",
+									"Base_column_id" : "POS_PS_IDENT",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "POS_PS_IDENT"
+								}
+							]
+						},
+						{
+							"name" : ["Organizaciona sema", "Organization schema"],
+							"id" : "ORGANIZACIONA_SEMA",
+							"column" : [
+								{
+									"name" : ["Tip pol.org", "Type of pol.org"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Registrovan kod", "Registered code"],
+									"id" : "TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Poslovni sistem", "Business system"],
+									"id" : "PS_IDENT",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Broj akta o organizaciji", "Number of organization"],
+									"id" : "VER_BROJ",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Vazi od", "Valid from"],
+									"id" : "VER_VAZI_OD",
+									"type" : "datetime",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Do", "To"],
+									"id" : "VER_DO",
+									"type" : "datetime",
+									"constraints" : null
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Broj akta o organizaciji", "Number of organization"],
+									"Id" : "ORGANIZACIONA_SEMA_PK",
+									"Table_name" : ["Organizaciona sema", "Organization schema"]
+								}
+							],
+							"Foreign_keys" : [
+								{
+									"id" : "VERZIJE_ORGANIZACIJE_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "ORGANIZACIONA_SEMA",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "VERZIJE_ORGANIZACIJE_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "ORGANIZACIONA_SEMA",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "VERZIJE_ORGANIZACIJE_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "ORGANIZACIONA_SEMA",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "PS_IDENT"
+								}
+							]
+						},
+						{
+							"name" : ["Organizacione jedinice", "Organization units"],
+							"id" : "ORGANIZACIONE_JEDINICE",
+							"column" : [
+								{
+									"name" : ["Tip pol.organizacije", "Type of political organization"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Registrovan kod", "Registered at"],
+									"id" : "TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Poslovni sistem", "Business system"],
+									"id" : "PS_IDENT",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Organizaciona jedinica", "Organization unit"],
+									"id" : "OJ_OZNAKA",
+									"type" : "numeric(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Naziv", "Name"],
+									"id" : "OJ_NAZIV",
+									"type" : "varchar(80)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Adresa", "Adress"],
+									"id" : "OJ_ADRESA",
+									"type" : "varchar(120)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["www", "www"],
+									"id" : "OJ_WWW",
+									"type" : "varchar(80)",
+									"constraints" : null
+								},
+								{
+									"name" : ["E_mail", "E_mail"],
+									"id" : "OJ_E_MAIL",
+									"type" : "varchar(40)",
+									"constraints" : null
+								},
+								{
+									"name" : ["Telefon-centrala", "Telephone-center"],
+									"id" : "OJ_TELEFON",
+									"type" : "char(1)",
+									"constraints" : null
+								},
+								{
+									"name" : ["Klasifikacija-tip", "Classification-type"],
+									"id" : "TPS_OZNAKA",
+									"type" : "char(1)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Klasifikacija-klasa", "Classification-class"],
+									"id" : "NOJ_OZNAKA_KLASE",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Organizaciona jedinica", "Organization unit"],
+									"Id" : "ORGANIZACIONE_JEDINICE_PK",
+									"Table_name" : ["Organizacione jedinice", "Organization units"]
+								}
+							],
+							"Foreign_keys" : [
+								{
+									"id" : "KLASIFIKACIJA_ORGJED_FK_1",
+									"strong_ties" : false,
+									"Base_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Base_column_id" : "TPS_OZNAKA",
+									"Referenced_table_id" : "KLASIFIKACIJA_ORGJED",
+									"Referenced_column_id" : "TPS_OZNAKA"
+								},
+								{
+									"id" : "KLASIFIKACIJA_ORGJED_FK_2",
+									"strong_ties" : false,
+									"Base_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Base_column_id" : "NOJ_OZNAKA_KLASE",
+									"Referenced_table_id" : "KLASIFIKACIJA_ORGJED",
+									"Referenced_column_id" : "NOJ_OZNAKA_KLASE"
+								},
+								{
+									"id" : "UNUTRASNJA_ORGANIZACIJA_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "UNUTRASNJA_ORGANIZACIJA_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "UNUTRASNJA_ORGANIZACIJA_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "POSLOVNI_SISTEM",
+									"Referenced_column_id" : "PS_IDENT"
+								}
+							]
+						},
+						{
+							"name" : ["Ko je u semi", "Who is in schema"],
+							"id" : "KO_JE_U_SEMI",
+							"column" : [
+								{
+									"name" : ["Tip pol.org", "Type of pol.org"],
+									"id" : "ORG_VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Registrovan kod", "Registered at"],
+									"id" : "ORG_TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Poslovni sistem", "Business system"],
+									"id" : "PS_IDENT",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Broj akta", "Number of"],
+									"id" : "VER_BROJ",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Jedinica u sastavu", "Units in composition"],
+									"id" : "OJ_OZNAKA",
+									"type" : "numeric(4)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : null,
+							"Foreign_keys" : [
+								{
+									"id" : "KO_JE_U_SEMI_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "ORG_VTO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "KO_JE_U_SEMI_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "ORG_TPO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "KO_JE_U_SEMI_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "PS_IDENT"
+								},
+								{
+									"id" : "KO_JE_U_SEMI_FK_4",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "VER_BROJ",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "VER_BROJ"
+								},
+								{
+									"id" : "KO_JE_U_SEMI2_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "ORG_VTO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "KO_JE_U_SEMI2_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "ORG_TPO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "KO_JE_U_SEMI2_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "PS_IDENT"
+								},
+								{
+									"id" : "KO_JE_U_SEMI2_FK_4",
+									"strong_ties" : true,
+									"Base_table_id" : "KO_JE_U_SEMI",
+									"Base_column_id" : "OJ_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "OJ_OZNAKA"
+								}
+							]
+						},
+						{
+							"name" : ["Sastav jedinice", "Composition of unit"],
+							"id" : "SASTAV_JEDINICE",
+							"column" : [
+								{
+									"name" : ["Tip pol.org", "Type of pol.org"],
+									"id" : "VTO_OZNAKA",
+									"type" : "char(2)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Registrovana kod", "Registered at"],
+									"id" : "TPO_OZNAKA",
+									"type" : "varchar(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Poslovni sistem", "Business system"],
+									"id" : "PS_IDENT",
+									"type" : "int",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Slozena jedinica", "Composite unit"],
+									"id" : "OJ_OZNAKA",
+									"type" : "numeric(4)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["Jedinica u sastavu", "Units in composition"],
+									"id" : "ORG_OJ_OZNAKA",
+									"type" : "numeric(4)",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : null,
+							"Foreign_keys" : [
+								{
+									"id" : "SASTAV_JEDINICE_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV_JEDINICE_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV_JEDINICE_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "PS_IDENT"
+								},
+								{
+									"id" : "SASTAV_JEDINICE_FK_4",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "OJ_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONA_SEMA",
+									"Referenced_column_id" : "VER_BROJ"
+								},
+								{
+									"id" : "SASTAV_JEDINICE2_FK_1",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "VTO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "VTO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV_JEDINICE2_FK_2",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "TPO_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "TPO_OZNAKA"
+								},
+								{
+									"id" : "SASTAV_JEDINICE2_FK_3",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "PS_IDENT",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "PS_IDENT"
+								},
+								{
+									"id" : "SASTAV_JEDINICE2_FK_4",
+									"strong_ties" : true,
+									"Base_table_id" : "SASTAV_JEDINICE",
+									"Base_column_id" : "ORG_OJ_OZNAKA",
+									"Referenced_table_id" : "ORGANIZACIONE_JEDINICE",
+									"Referenced_column_id" : "OJ_OZNAKA"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

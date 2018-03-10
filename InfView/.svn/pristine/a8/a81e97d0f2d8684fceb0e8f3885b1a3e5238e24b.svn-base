@@ -1,0 +1,52 @@
+{
+	"name" : ["PSW_2017_Korisnici", "PSW_2017_Korisnici"],
+	"subsystem" : [
+		{
+			"name" : ["Fizički model", "Physical model"],
+			"id" : "FIZICKI_MODEL",
+			"tabels" : [
+			{
+							"name" : ["Korisnici", "Users"],
+							"id" : "KORISNICI",
+							"column" : [
+								{
+									"name" : ["oznaka", "label"],
+									"id" : "KR_OZNAKA",
+									"type" : "varchar(10)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["korisnicko ime", "user name"],
+									"id" : "KR_KORISNICKO_IME",
+									"type" : "varchar(20)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["lozinka", "password"],
+									"id" : "KR_LOZINKA",
+									"type" : "varchar(50)",
+									"constraints" : "mandatory"
+								},
+								{
+									"name" : ["pravo pristupa", "right of access"],
+									"id" : "KR_PRAVO_PRISTUPA",
+									"type" : "bit",
+									"constraints" : "mandatory"
+								}
+							],
+							"Primary_keys" : [
+								{
+									"Column_name" : ["Oznaka", "Label"],
+									"Id" : "KORISNICI_PK",
+									"Table_name" : ["Korisnici", "Users"]
+								}
+							],
+							"Foreign_keys" : []
+						}
+			
+			
+			],
+			"package" : []
+		}
+	]
+}
